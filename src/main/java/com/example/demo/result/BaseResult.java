@@ -9,6 +9,22 @@ public class BaseResult {
 
     }
 
+    /**
+     * 成功
+     * @return
+     */
+    public static BaseResult success(){
+        return BaseResult.findBaseResult(1);
+    }
+
+    /**
+     * 失败
+     * @return
+     */
+    public static BaseResult error(){
+        return BaseResult.findBaseResult(0);
+    }
+
     public static BaseResult findBaseResult(int i){
         BaseResult baseResult = new BaseResult();
         if(i>=1){
