@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>检测系统登录</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.js"></script>
+
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="login-form">
+    <fieldset>
+        <legend>系统登录</legend>
+        <label>Login name</label>
+        <input type="text" ref="signName" placeholder="Please enter your login name…">
+        <label>Password</label>
+        <input type="text" ref="passWord" placeholder="Please enter your login password…">
+        <span class="help-block">Example block-level help text here.</span>
+        <label class="checkbox">
+            <input type="checkbox"> Check me out
+        </label>
+        <button v-on:click="toLogin" class="btn">Sign in</button>
+    </fieldset>
+</div>
+</body>
+<script type="application/javascript">
+    var loginForm = new Vue({
+        el:'#login-form',
+        data:{
+            signName:document.getElementById("signName"),
+            passWord:document.getElementById("passWord")
+        },
+        methods:{
+            toLogin:function(event){
+                var url = 'http://localhost:8080/findDemoById?id=1';
+                this.signName = this.$refs.signName.value;
+                this.passWord = this.$refs.passWord.value;
+                alert(this.signName+this.passWord);
+                var data = {signName:this.signName,passWord:this.passWord};
+
+                this.$http.jsonp(url,'').then(function(res){
+                    alert(1);
+                })
+            }
+        }
+    })
+
+</script>
+</html>
