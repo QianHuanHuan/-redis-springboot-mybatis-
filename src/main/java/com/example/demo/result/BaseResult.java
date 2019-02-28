@@ -14,7 +14,7 @@ public class BaseResult {
      * @return
      */
     public static BaseResult success(){
-        return BaseResult.findBaseResult(1);
+        return findBaseResult(1);
     }
 
     /**
@@ -22,9 +22,12 @@ public class BaseResult {
      * @return
      */
     public static BaseResult error(){
-        return BaseResult.findBaseResult(0);
+        return findBaseResult(0);
     }
 
+    public static BaseResult findBaseResult(boolean flag){
+        return flag?findBaseResult(1):findBaseResult(0);
+    }
     public static BaseResult findBaseResult(int i){
         BaseResult baseResult = new BaseResult();
         if(i>=1){
